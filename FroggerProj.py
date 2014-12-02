@@ -1,11 +1,3 @@
-# Lab 16
-# 70pt -  Add in movement buttons for up, down, left and right using WASD
-# 80pt -  Make sure the player can't go out of bounds to the left, right or down.
-# 90pt -  When you hit space, fire a missile straight up! 
-#         Subtract from how many missiles you have left
-# 100pt - Destroy the target if a missile hits it! 
-# Hints: use drawpad.delete(enemy) in the collision detect function, which you can trigger
-# from the key press event... maybe a loop to keep checking until the rocket goes out of bounds?
 from Tkinter import *
 root = Tk()
 drawpad = Canvas(root, width=800,height=600, background='white')
@@ -17,7 +9,7 @@ rocket1Fired = False
 
 direction = 5
 direction = -5
-faste = 7
+fast = 7
 
 
 class myApp(object):
@@ -49,10 +41,10 @@ class myApp(object):
         drawpad.after(5,self.animate)
         x1,y1,x2,y2 = drawpad.coords(car2)
         if x2 > 800:
-            faste = - 7
+            fast = - 7
         elif x1 < 0:
-            faste = 7
-        drawpad.move(car2, direction, 0)
+            fast = 7
+        drawpad.move(car2, fast, 0)
  
             
 

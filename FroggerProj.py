@@ -98,10 +98,8 @@ class myApp(object):
         if event.char == "w":
             if y1 <= 0:
                 drawpad.move(player,0,30)
-                collide
             else: 
                 drawpad.move(player,0,-30)
-                collide
         if event.char == "s":
             if y2 >= 600:
                 drawpad.move(player,0,0)
@@ -120,17 +118,22 @@ class myApp(object):
                 
 
             
-    
+#Cant make this work for some reason    
     def collisionDetect(self):
         global car1
         global car2
         global bug
+        global finish
         px1,py1,px2,py2 = drawpad.coords(player)
         c1x1,c1y1,c1x2,c1y2 = drawpad.coords(car1)
         c2x1,c2y1,c2x2,c2y2 = drawpad.coords(car2)
         bx1,by1,bx2,by2 = drawpad.coords(bug)
-
-        if (px1 < c1x1 and px2 > c1x2)and(py1 < c1y1 and py2 > c1y2):
+        fx1,fy1,fx2,fy2 = drawpad.coords(finish)
+        if (px1 > fx1 and px2 < fx2)and(py1 > fy1 and py2 < fy2):
+            print hit
+        if (px1 < c1x1 and px2 > c1x2)and(py1 > c1y1 and py2 < c1y2):
+            print hit
+        if (px1 > bx1 and px2 < bx2)and(py1 < by1 and py2 > by2):
             print hit
 
 
